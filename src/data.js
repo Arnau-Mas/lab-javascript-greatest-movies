@@ -2005,3 +2005,113 @@ const movies = [
 if (typeof module !== 'undefined') {
   module.exports = movies;
 }
+
+//ITERATION 1 + Bonus
+function getAllDirectors(array){
+  let directors = array.map(movie => movie.director);
+  let uniqueDirectors = [];
+  uniqueDirectors = directors.map(director => {
+    if(uniqueDirectors.includes(director) == false){
+      return director;
+    }
+  })
+  return uniqueDirectors;
+}
+
+console.log(getAllDirectors(movies));
+
+//ITERATION 2
+function howManyMovies(array){
+  let dramaSpielbergMovies = array.filter(movie => movie.director==='Steven Spielberg' && movie.genre.includes('Drama'));
+  return dramaSpielbergMovies;
+}
+
+console.log(howManyMovies(movies));
+
+//ITERATION 3
+
+function scoresAverage(array){
+  let scores = array.map (movie => movie.score);
+  let sumScores = scores.reduce((a,b) => a+b);
+  let average = sumScores/array.length;
+  return average.toFixed(2);
+}
+
+console.log(scoresAverage(movies));
+
+//ITERATION 4
+function dramaMoviesScore(array){
+  let dramaMovies = array.filter(movie => movie.genre.includes('Drama'));
+  return scoresAverage(dramaMovies);
+}
+
+console.log(dramaMoviesScore(movies))
+
+//ITERATION 5
+function orderByYear(array){
+  array.sort(function (a, b) {
+    if (a.title > b.title) {
+      return 1;
+    }if (a.title < b.title) {
+      return -1;
+    }
+    return 0;
+  });
+  array.sort(function (a, b) {
+    if (a.year > b.year) {
+      return 1;
+    }if (a.year < b.year) {
+      return -1;
+    }
+    return 0;
+  });
+  return array;
+}
+
+console.log(orderByYear(movies))
+
+//ITERATION 6
+function orderAlphabetically(array){
+  let movieTitles = array.map(movie => movie.title);
+  movieTitles.splice(20, movieTitles.length);
+  movieTitles.sort();
+  return movieTitles;
+}
+
+console.log(orderAlphabetically(movies));
+
+//ITERATION 7
+function turnHoursToMinutes(array){
+  
+  let newMoviesArr = array.map(function(movie){
+    if(movie.duration.includes('h') && movie.duration.includes('min')){
+      let hours = parseInt(movie.duration.charAt(0))*60;
+      let minutes = parseInt(movie.duration.slice(2, movie.duration.length-1));
+      movie.duration = hours+minutes+'min'; 
+    }else if(movie.duration.includes('h')){
+      let hours = parseInt(movie.duration.charAt(0))*60;
+      movie.duration = hours+'min'; 
+    }
+    return movie;
+  });
+
+  return newMoviesArr;
+}
+
+console.log(turnHoursToMinutes(movies));
+
+
+
+
+//apunts
+
+/*   for(let movie of array){
+    if(movie.duration.includes('h') && movie.duration.includes('min')){
+      let hours = parseInt(movie.duration.charAt(0))*60;
+      let minutes = parseInt(movie.duration.slice(2, movie.duration.length-1));
+      movie.duration = hours+minutes+'min'; 
+    }else if(movie.duration.includes('h')){
+      let hours = parseInt(movie.duration.charAt(0))*60;
+      movie.duration = hours+'min'; 
+    }
+  } */
