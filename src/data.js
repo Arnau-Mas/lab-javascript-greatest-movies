@@ -2007,7 +2007,7 @@ if (typeof module !== 'undefined') {
 }
 
 //ITERATION 1 + Bonus
-function getAllDirectors(array){
+/* function getAllDirectors(array){
   let directors = array.map(movie => movie.director);
   let uniqueDirectors = [];
   uniqueDirectors = directors.map(director => {
@@ -2102,7 +2102,7 @@ console.log(turnHoursToMinutes(movies));
 
 
 
-
+ */
 //apunts
 
 /*   for(let movie of array){
